@@ -203,7 +203,9 @@ const lang = pathname.startsWith("/es") ? "es" : "en";
     });
   });
 </script>
+
 <script
+  is:inline
   src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
   integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
   crossorigin="anonymous"
@@ -212,6 +214,7 @@ const lang = pathname.startsWith("/es") ? "es" : "en";
 <!-- Script para la generación del PDF -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    
     const downloadBtn = document.getElementById("download-btn");
     const pagesContainer = document.getElementById("pages");
 
@@ -223,20 +226,23 @@ const lang = pathname.startsWith("/es") ? "es" : "en";
         const tempContainer = document.createElement("div");
 
         // Clonar y modificar cada página
-        pageContents.forEach((page, index) => {
+        pageContents.forEach((page) => {
           const clonedPage = page.cloneNode(true);
 
-          // Eliminar el borde y las clases relacionadas con el tamaño
-          clonedPage.style.border = "none";
-          clonedPage.className = clonedPage.className.replace(
-            /\b(w-\S+|h-\S+|min-h-\S+|min-w-\S+)\b/g,
-            ""
-          );
+          // Verificar si el nodo clonado es un elemento HTML para evitar errores
+          if (clonedPage instanceof HTMLElement) {
+            // Eliminar el borde y las clases relacionadas con el tamaño
+            clonedPage.style.border = "none";
+            clonedPage.className = clonedPage.className.replace(
+              /\b(w-\S+|h-\S+|min-h-\S+|min-w-\S+)\b/g,
+              ""
+            );
 
-          // Asegurar que cada página comience en una nueva página del PDF
-          clonedPage.style.pageBreakAfter = "always";
+            // Asegurar que cada página comience en una nueva página del PDF
+            clonedPage.style.pageBreakAfter = "always";
 
-          tempContainer.appendChild(clonedPage);
+            tempContainer.appendChild(clonedPage);
+          }
         });
 
         const options = {
@@ -249,6 +255,7 @@ const lang = pathname.startsWith("/es") ? "es" : "en";
         };
 
         // Generar el PDF con todas las páginas
+        // @ts-ignore
         await html2pdf().from(tempContainer).set(options).save();
 
         // Eliminar el contenedor temporal

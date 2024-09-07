@@ -1,10 +1,10 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 /* empty css                                 */
-import { c as createComponent, r as renderTemplate, f as renderComponent, a as createAstro, m as maybeRenderHead } from '../chunks/astro/server_BKSh1SVN.mjs';
-import { $ as $$Layout } from '../chunks/Layout_BF7Ekp__.mjs';
+import { c as createAstro, a as createComponent, r as renderTemplate, f as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_DrIVYDa9.mjs';
+import { $ as $$Layout } from '../chunks/Layout_nkQgqi0_.mjs';
 export { renderers } from '../renderers.mjs';
 
-const $$Astro = createAstro();
+const $$Astro = createAstro("https://portfolio.dovaldev.com");
 const $$Index = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;

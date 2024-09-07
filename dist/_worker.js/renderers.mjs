@@ -1,6 +1,6 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 import { f as AstroUserError, A as AstroError } from './chunks/astro/assets-service_Hm5Harxd.mjs';
-import { A as AstroJSX, i as renderJSX, j as createVNode } from './chunks/astro/server_BKSh1SVN.mjs';
+import { A as AstroJSX, i as renderJSX, j as createVNode } from './chunks/astro/server_DrIVYDa9.mjs';
 
 const slotName = (str) => str.trim().replace(/[-_]([a-z])/g, (_, w) => w.toUpperCase());
 async function check(Component, props, { default: children = null, ...slotted } = {}) {
