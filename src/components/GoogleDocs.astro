@@ -1,0 +1,20 @@
+---
+import Nav from "@components/Nav.astro";
+---
+
+<main class="h-screen w-full overflow-hidden flex flex-col">
+    <!-- Nav conent -->
+    <header class="pt-4 px-4 w-full flex flex-col items-center">
+      <Nav />
+    </header>
+
+    <slot />
+
+    <!-- Footer content -->
+    <footer class="h-10 bg-black/10 flex justify-center items-center">
+      <p class="text-black dark:text-white font-thin text-base">
+        Creado por <span class="font-bold text-yellow-600 dark:text-yellow-300">Juan A. Doval</span> en
+        Astro
+      </p>
+    </footer>
+  </main>
