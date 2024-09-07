@@ -4,9 +4,12 @@ import tailwind from "@astrojs/tailwind";
 
 import mdx from "@astrojs/mdx";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), mdx()],
+
   i18n: {
     locales: ["en", "es"],
     defaultLocale: "es",
@@ -14,4 +17,7 @@ export default defineConfig({
       prefixDefaultLocale: true,
     },
   },
+
+  output: "server",
+  adapter: cloudflare(),
 });
