@@ -1,50 +1,263 @@
 ---
 interface Props {
-	title: string;
+  title: string;
 }
 
+// get lang from slug
+const { pathname } = Astro.url;
 const { title } = Astro.props;
+// si el pathname empieza por  /es, entonces el lang es español y si no es inglés
+const lang = pathname.startsWith("/es") ? "es" : "en";
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="bg-gray-50 dark:bg-[#13151a]">
+    <slot />
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  :root {
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
+
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: var(--bg-color);
+  }
+
+  /* Configuración de modos oscuro y claro */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-color: #13151a;
+      --scrollbar-track: #1a1a1a;
+      --scrollbar-thumb: #4b4b4b;
+      --scrollbar-thumb-hover: #6a6a6a;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg-color: #ffffff;
+      --scrollbar-track: #f3f4f6;
+      --scrollbar-thumb: #cbd5e0;
+      --scrollbar-thumb-hover: #a0aec0;
+    }
+  }
+
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+
+  /* Para Chrome, Safari, Edge y Opera */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Para Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Estilos scroll bar */
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 9999px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-thumb-hover);
+  }
+
+  /** Page Styles */
+  .page-content h1 {
+    @apply text-yellow-500 text-3xl font-extrabold;
+  }
+
+  .page-content h2 {
+    @apply text-red-400 text-2xl font-bold mt-8 mb-2;
+  }
+  .page-content h2:first-of-type {
+    @apply mt-0;
+  }
+
+  .page-content h3 {
+    @apply text-blue-400 text-xl font-semibold mt-4 mb-2;
+  }
+
+  .page-content h3:first-of-type {
+    @apply mt-0;
+  }
+
+  .page-content p {
+    @apply text-gray-700 dark:text-gray-300 text-[13px] font-extralight leading-6;
+  }
+  .page-content p em {
+    @apply text-gray-700 dark:text-gray-300 text-[13px] font-semibold;
+  }
+  .page-content p strong {
+    @apply text-gray-700 dark:text-gray-300 font-semibold;
+  }
+  .page-content span.subtitle {
+    @apply text-gray-700 dark:text-gray-300 text-base font-medium;
+  }
+  .page-content span.subtitle-2 {
+    @apply text-gray-700 dark:text-gray-300 text-base font-light;
+  }
+
+  .page-content a {
+    @apply text-pink-500 hover:underline font-medium;
+  }
+
+  .page-content ul {
+    @apply list-disc list-inside mt-3 mb-5 space-y-2;
+  }
+
+  .page-content li {
+    @apply text-gray-700 dark:text-gray-300 text-[13px] font-light;
+  }
+  .page-content li span {
+    @apply text-gray-700 dark:text-gray-300 text-[13px] font-medium;
+  }
+  .page-content li > strong {
+    @apply text-gray-700 dark:text-gray-300 text-[13px] font-semibold;
+  }
+
+  hr {
+    @apply border-t-4 border-gray-500 mt-1 mb-5 rounded-xl;
+  }
+
+  .tag {
+    @apply inline-block px-1 py-0.5 rounded font-medium;
+  }
+  .bg-random-1 {
+    @apply bg-red-300 !text-black;
+  }
+
+  .bg-random-2 {
+    @apply bg-green-300 !text-black;
+  }
+
+  .bg-random-3 {
+    @apply bg-blue-300 !text-black;
+  }
+
+  .bg-random-4 {
+    @apply bg-yellow-200 !text-black;
+  }
+
+  .bg-random-5 {
+    @apply bg-purple-300 !text-black;
+  }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const tags = document.querySelectorAll(".tag");
+    const randomClasses = [
+      "bg-random-1",
+      "bg-random-2",
+      "bg-random-3",
+      "bg-random-4",
+      "bg-random-5",
+    ];
+
+    tags.forEach((tag) => {
+      const randomClass =
+        randomClasses[Math.floor(Math.random() * randomClasses.length)];
+      tag.classList.add(randomClass);
+    });
+  });
+</script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+  integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+
+<!-- Script para la generación del PDF -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const downloadBtn = document.getElementById("download-btn");
+    const pagesContainer = document.getElementById("pages");
+
+    if (downloadBtn && pagesContainer) {
+      downloadBtn.addEventListener("click", async function () {
+        const pageContents = pagesContainer.querySelectorAll(".page-content");
+
+        // Crear un contenedor temporal para las páginas modificadas
+        const tempContainer = document.createElement("div");
+
+        // Clonar y modificar cada página
+        pageContents.forEach((page, index) => {
+          const clonedPage = page.cloneNode(true);
+
+          // Eliminar el borde y las clases relacionadas con el tamaño
+          clonedPage.style.border = "none";
+          clonedPage.className = clonedPage.className.replace(
+            /\b(w-\S+|h-\S+|min-h-\S+|min-w-\S+)\b/g,
+            ""
+          );
+
+          // Asegurar que cada página comience en una nueva página del PDF
+          clonedPage.style.pageBreakAfter = "always";
+
+          tempContainer.appendChild(clonedPage);
+        });
+
+        const options = {
+          margin: 0,
+          filename: "cv-juan-a-doval.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 1.9 },
+          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+          pagebreak: { mode: ["avoid-all", "css", "legacy"] },
+        };
+
+        // Generar el PDF con todas las páginas
+        await html2pdf().from(tempContainer).set(options).save();
+
+        // Eliminar el contenedor temporal
+        tempContainer.remove();
+      });
+    } else {
+      console.error(
+        "El botón de descarga o el contenedor de páginas no existen."
+      );
+    }
+  });
+</script>

@@ -1,0 +1,123 @@
+---
+import SunIcon from "@icons/Sun.astro"
+import MoonIcon from "@icons/Moon.astro"
+import SystemIcon from "@icons/System.astro"
+
+const THEMES = ["Light", "Dark", "System"]
+---
+
+<!-- Versión móvil -->
+<div class="relative ml-1 mr-1 block md:hidden">
+  <button
+    transition:persist
+    id="theme-toggle-btn-mobile"
+    class="appearance-none border-none flex hover:scale-125 transition"
+  >
+    <span class="sr-only">Elige el tema</span>
+    <SunIcon id="light-mobile" class="text-gray-700 dark:text-white theme-toggle-icon-mobile size-5 transition-all" />
+    <MoonIcon
+      id="dark-mobile"
+      class="text-gray-700 dark:text-white theme-toggle-icon-mobile absolute size-5 transition-all"
+    />
+    <SystemIcon
+      id="system-mobile"
+      class="text-gray-700 dark:text-white theme-toggle-icon-mobile absolute size-5 transition-all"
+    />
+  </button>
+  <div
+    transition:persist
+    id="themes-menu-mobile"
+    class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+  >
+    <ul>
+      {
+        THEMES.map((theme) => (
+          <li class="text-black dark:text-gray-100 themes-menu-option-mobile px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm">
+            {theme}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<style>
+  #themes-menu-mobile.open {
+    display: inline;
+    animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @keyframes scale-up-center {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+</style>
+
+<script is:inline>
+  let removeMobile = null
+  const matchMediaMobile = window.matchMedia("(prefers-color-scheme: dark)")
+  const themesMenuMobile = document.getElementById("themes-menu-mobile")
+
+  const getThemePreferenceMobile = () => {
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem("theme") ?? "system"
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light"
+  }
+
+  const updateIconMobile = (themePreference) => {
+    document.querySelectorAll(".theme-toggle-icon-mobile").forEach((element) => {
+      element.style.scale = element.id.includes(themePreference) ? "1" : "0"
+    })
+  }
+
+  const updateThemeMobile = () => {
+    if (removeMobile != null) {
+      removeMobile()
+    }
+    matchMediaMobile.addEventListener("change", updateThemeMobile)
+    removeMobile = () => {
+      matchMediaMobile.removeEventListener("change", updateThemeMobile)
+    }
+
+    const themePreference = getThemePreferenceMobile()
+    const isDark =
+      themePreference === "dark" ||
+      (themePreference === "system" && matchMediaMobile.matches)
+
+    updateIconMobile(themePreference)
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark")
+  }
+
+  updateThemeMobile()
+
+  document.addEventListener("click", () => themesMenuMobile.classList.remove("open"))
+
+  document.getElementById("theme-toggle-btn-mobile").addEventListener("click", (e) => {
+    e.stopPropagation()
+    const isClosed = !themesMenuMobile.classList.contains("open")
+    themesMenuMobile.classList[isClosed ? "add" : "remove"]("open")
+  })
+
+  document.querySelectorAll(".themes-menu-option-mobile").forEach((element) => {
+    element.addEventListener("click", (e) => {
+      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim())
+      updateThemeMobile()
+    })
+  })
+
+  document.addEventListener('astro:after-swap', () => {
+    updateThemeMobile();
+    window.scrollTo({ left: 0, top: 0, behavior: 'instant' });
+  })
+</script>

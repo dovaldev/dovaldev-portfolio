@@ -1,0 +1,15 @@
+---
+const { frontmatter, scale } = Astro.props;
+
+---
+
+<article
+  class="page-content relative w-full h-auto md:h-[1056px] md:w-[747px] md:min-h-[1056px] md:min-w-[747px]  border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-white bg-white dark:bg-[#0c0d11] p-5 md:p-20"
+>
+  <slot />
+
+  <span class="absolute bottom-8 right-10 text-gray-700 text-xs">{frontmatter.page}</span>
+  <span class="absolute bottom-5 inset-x-0 text-gray-700 text-[10px] font-thin text-center w-full">CV Juan A. Doval Nogueira</span>
+</article>
+
+

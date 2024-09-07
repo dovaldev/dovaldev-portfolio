@@ -1,0 +1,155 @@
+---
+import IconDoc from "@icons/IconDoc.astro";
+import { FILE_NAME } from "@js/global";
+import NavLink from "@components/NavLink.astro";
+import IconStar from "@icons/IconStar.astro";
+import IconFolder from "@icons/IconFolder.astro";
+import IconCloud from "@icons/IconCloud.astro";
+import IconSearch from "@icons/IconSearch.astro";
+import IconUndo from "@icons/IconUndo.astro";
+import IconRedo from "@icons/IconRedo.astro";
+import IconPrint from "@icons/IconPrint.astro";
+import IconText from "@icons/IconText.astro";
+import IconFormat from "@icons/IconFormat.astro";
+import IconLock from "@icons/IconLock.astro";
+import IconArrowDown from "@icons/IconArrowDown.astro";
+import IconRecord from "@icons/IconRecord.astro";
+import IconMessage from "@icons/IconMessage.astro";
+import IconRollback from "@icons/IconRollback.astro";
+import ThemeToggle from "@components/ThemeToggle.astro";
+import IconArrowLeft from "@icons/IconArrowLeft.astro";
+import ThemeToggleMobile from "@components/ThemeToggleMobile.astro";
+import IconLinkedin from "@icons/IconLinkedin.astro";
+import IconGithub from "@icons/IconGithub.astro";
+---
+
+<!-- Header 1 -->
+<nav class="hidden w-full md:flex gap-2 justify-between">
+  <!-- Header 1-1 -->
+  <div class="flex w-auto shrink">
+    <div
+      title="Pagina principal de documentos"
+      class="flex justify-center items-center shrink"
+    >
+      <IconDoc class="size-9" />
+    </div>
+
+    <div class="flex flex-col justify-center shrink">
+      <div class="flex items-center gap-2 pl-2 shrink">
+        <a href="/" class="text-black dark:text-white text-lg">{FILE_NAME}</a>
+        <IconStar class="size-5 text-black dark:text-white ml-4" />
+        <IconFolder class="size-5 text-black dark:text-white" />
+        <IconCloud class="size-6 text-black dark:text-white" />
+      </div>
+      <div class="flex items-center w-auto shrink">
+        <NavLink href="#">Archivo</NavLink>
+        <NavLink href="#">Editar</NavLink>
+        <NavLink href="#">Ver</NavLink>
+        <NavLink href="#">Insertar</NavLink>
+        <NavLink href="#">Formato</NavLink>
+        <NavLink href="#">Herramientas</NavLink>
+        <NavLink href="#">Extensiones</NavLink>
+        <NavLink href="#">Ayuda</NavLink>
+      </div>
+    </div>
+  </div>
+  <!-- Header 1-2 -->
+  <div class="flex flex-grow gap-4 justify-end items-center w-full">
+    <a href="https://www.linkedin.com/in/juanadoval/" class="hover:bg-gray-200 rounded-lg p-1"><IconLinkedin class="size-5 text-black dark:text-white" /></a>
+    <a href="https://github.com/dovaldev/" class="hover:bg-gray-200 rounded-lg p-1"><IconGithub class="size-5 text-black dark:text-white" /></a>
+    <ThemeToggle elID="theme-toggle-btn" menuID="themes-menu" />
+    <IconRollback class="size-5 text-black dark:text-white shrink-0" />
+    <IconMessage class="size-5 text-black dark:text-white" />
+    <div class="bg-[#C2E7FF] rounded-3xl">
+      <div class="py-2.5 px-6 flex items-center gap-2">
+        <IconLock class="size-5 text-gray-800" />
+        <span>Compartir</span>
+        <div class="h-5 w-[1px] bg-white ml-1"></div>
+        <IconArrowDown class="size-3 text-gray-800" />
+      </div>
+    </div>
+    <img
+      src="/images/icons/dovaldev-icon.webp"
+      class="rounded-full size-12 object-cover"
+    />
+  </div>
+</nav>
+<!-- Header 2 -->
+<nav
+  class="hidden md:block mt-2 verflow-x-scroll whitespace-nowrap cursor-grab overflow-hidden w-full"
+>
+  <ul
+    class="flex bg-gray-100 ark:bg-gray-200 dark:bg-gray-700 w-full rounded-2xl p-2 gap-2 items-center"
+  >
+    <li><IconSearch class="size-5 text-black dark:text-white" /></li>
+    <li><IconUndo class="size-5 text-black dark:text-white" /></li>
+    <li><IconRedo class="size-5 text-black dark:text-white" /></li>
+    <li><button class="m-0 p-1 flex justify-center items-center hover:bg-gray-200 rounded" id="download-btn"><IconPrint class="size-5 text-black dark:text-white" /></button></li>
+    <li><IconText class="size-5 text-black dark:text-white" /></li>
+    <li><IconFormat class="size-5 text-black dark:text-white" /></li>
+    <li>
+      <select
+        class="bg-gray-200 dark:bg-gray-700 text-black dark:text-white text-sm rounded-lg"
+      >
+        <option value="100">100%</option>
+        <option value="80">80%</option>
+      </select>
+    </li>
+    <div class="h-5 w-[1px] bg-white"></div>
+    <select
+      class="bg-gray-200 dark:bg-gray-700 text-black dark:text-white text-sm rounded-lg"
+    >
+      <option value="100">Texto nor...</option>
+    </select>
+    <li>
+      <select
+        class="bg-gray-200 dark:bg-gray-700 text-black dark:text-white text-sm rounded-lg"
+      >
+        <option value="100">PT Mo...</option>
+      </select>
+    </li>
+    <div class="h-5 w-[1px] bg-white"></div>
+    <li>
+      <select
+        class="bg-gray-200 dark:bg-gray-700 text-black dark:text-white text-sm rounded-lg"
+      >
+        <option value="100">Subtítulo</option>
+      </select>
+    </li>
+    <li>
+      <select
+        class="bg-gray-200 dark:bg-gray-700 text-black dark:text-white text-sm rounded-lg"
+      >
+        <option value="100">Robot...</option>
+      </select>
+    </li>
+    <div class="h-5 w-[1px] bg-white mr-1"></div>
+    <li>
+      <div class="flex items-center gap-2.5">
+        <button class="text-black dark:text-white">-</button>
+        <input
+          type="number"
+          class="bg-gray-200 dark:bg-gray-700 text-black dark:text-white text-sm rounded border w-8 h-6 text-center"
+          value="9"
+        />
+        <button class="text-black dark:text-white">+</button>
+      </div>
+    </li>
+    <div class="h-5 w-[1px] bg-white ml-1"></div>
+    <div class="flex gap-4 items-center">
+      <li class="font-semibold text-black dark:text-white">B</li>
+      <li class="font-serif italic text-black dark:text-white">I</li>
+      <li class="underline underline-offset-4 text-black dark:text-white">U</li>
+    </div>
+  </ul>
+</nav>
+<nav class="w-full flex md:hidden items-center gap-4 justify-between">
+  <IconArrowLeft class="size-8 text-black dark:text-white" />
+  <a href="/" class="text-black dark:text-white text-xl flex-1">{FILE_NAME}</a>
+  <ThemeToggleMobile />
+</nav>
+<nav class="flex gap-4 my-2 md:hidden">
+
+  <a href="https://www.linkedin.com/in/juanadoval/" class="hover:bg-gray-200 rounded-lg p-1"><IconLinkedin class="size-5 text-black dark:text-white" /></a>
+  <a href="https://github.com/dovaldev/" class="hover:bg-gray-200 rounded-lg p-1"><IconGithub class="size-5 text-black dark:text-white" /></a>
+</nav>

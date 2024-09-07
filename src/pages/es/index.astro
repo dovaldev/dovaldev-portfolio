@@ -1,0 +1,34 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Nav from "@components/Nav.astro";
+import Page from "@components/Page.astro";
+const pages = await Astro.glob("../../content/es/*.mdx");
+//console.log(pages);  // Verifica el contenido que se obtiene de los archivos MDX
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="h-screen w-full overflow-hidden flex flex-col">
+    <header class="pt-4 px-4 w-full flex flex-col items-center">
+      <Nav />
+    </header>
+
+    <div
+      id="pages"
+      class="flex flex-1 flex-col gap-10 items-center overflow-y-scroll scrollbar-custom p-2 md:py-5"
+    >
+      {
+        pages.map((item) => (
+            <item.Content />
+        ))
+      }
+    </div>
+
+    <!-- Footer content -->
+    <footer class="h-10 bg-black/10 flex justify-center items-center">
+      <p class="text-black dark:text-white font-thin text-base">
+        Creado por <span class="font-bold text-yellow-300">Juan A. Doval</span> en
+        Astro
+      </p>
+    </footer>
+  </main>
+</Layout>
