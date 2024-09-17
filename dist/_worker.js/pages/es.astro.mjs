@@ -400,7 +400,7 @@ const $$Astro = createAstro("https://portfolio.dovaldev.com");
 const $$Index = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
-  const pages = await Astro2.glob(/* #__PURE__ */ Object.assign({"../../content/es/page-1.mdx": () => import('../chunks/page-1_BGfLBu58.mjs'),"../../content/es/page-2.mdx": () => import('../chunks/page-2_BMTiRwvn.mjs'),"../../content/es/page-3.mdx": () => import('../chunks/page-3_DGERRh3D.mjs')}), () => "../../content/es/*.mdx");
+  const pages = await Astro2.glob(/* #__PURE__ */ Object.assign({"../../content/es/page-1.mdx": () => import('../chunks/page-1_CAGEiT_a.mjs'),"../../content/es/page-2.mdx": () => import('../chunks/page-2_BMTiRwvn.mjs'),"../../content/es/page-3.mdx": () => import('../chunks/page-3_DGERRh3D.mjs')}), () => "../../content/es/*.mdx");
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Porfolio de Juan A. Doval con mis Proyectos | dovaldev", "data-astro-cid-7pewbour": true }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "GoogleDocs", $$GoogleDocs, { "data-astro-cid-7pewbour": true }, { "default": ($$result3) => renderTemplate` ${maybeRenderHead()}<div id="pages" class="flex flex-1 flex-col gap-10 items-center overflow-y-scroll scrollbar-custom p-2 md:py-5" data-astro-cid-7pewbour> ${pages.map((item) => renderTemplate`${renderComponent($$result3, "item.Content", item.Content, { "data-astro-cid-7pewbour": true })}`)} </div> ` })} ` })}  `;
 }, "/Users/lilianacristinasilvacarvalho/Desktop/ProyectosAstro/dovaldev-portfolio/src/pages/es/index.astro", void 0);
 
