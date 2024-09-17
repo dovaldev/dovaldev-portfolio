@@ -1,9 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Nav from "@components/Nav.astro";
 import GoogleDocs from "@components/GoogleDocs.astro";
-import ProjectCard from "@components/ProjectCard.astro";
-import { projectsES } from "@data/projects.js";
 const pages = await Astro.glob("../../content/es/*.mdx");
 //console.log(pages);  // Verifica el contenido que se obtiene de los archivos MDX
 ---
@@ -22,25 +19,27 @@ const pages = await Astro.glob("../../content/es/*.mdx");
 <script>
   import { projectsES } from "@data/projects.js";
 
+  // Función para detectar si es un dispositivo móvil
+  const isMobile = (): boolean => window.innerWidth <= 768;
+
   document.addEventListener("DOMContentLoaded", () => {
     const links = document.querySelectorAll("a");
     let cardContainer: HTMLDivElement | null = null;
 
-    const showCard = (
-      project: {
-        id?: number;
-        name: string;
-        description: string;
-        image: string;
-        url?: string;
-        skills: string[];
-      },
-      linkRect: DOMRect
-    ) => {
+    interface Project {
+      id?: number;
+      name: string;
+      description: string;
+      image: string;
+      url: string;
+      skills: string[];
+    }
+
+    const showCard = (project: Project, linkRect: DOMRect): void => {
       if (!cardContainer) {
         cardContainer = document.createElement("div");
         cardContainer.classList.add(
-          "fixed", // Cambiado de 'absolute' a 'fixed'
+          "fixed",
           "z-50",
           "project-card-hover",
           "overflow-hidden",
@@ -56,7 +55,12 @@ const pages = await Astro.glob("../../content/es/*.mdx");
             <h2 class="font-bold text-xl mb-2 text-gray-900 dark:text-gray-100">${project.name}</h2>
             <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">${project.description}</p>
             <div class="flex flex-wrap gap-2 mb-4 text-sm">
-              ${project.skills.map((skill) => `<span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 text-xs font-semibold px-2.5 py-0.5 rounded">${skill}</span>`).join("")}
+              ${project.skills
+                .map(
+                  (skill) =>
+                    `<span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 text-xs font-semibold px-2.5 py-0.5 rounded">${skill}</span>`
+                )
+                .join("")}
             </div>
             <div class="flex justify-center">
               <a href="${project.url}" target="_blank" rel="noopener noreferrer" class="bg-[#C2E7FF] !text-black hover:brightness-105 rounded-3xl block w-full text-white font-bold py-2 px-4 rounded text-center transition duration-300 ease-in-out">
@@ -68,15 +72,12 @@ const pages = await Astro.glob("../../content/es/*.mdx");
       `;
 
         document.body.appendChild(cardContainer);
-
-        // Posicionar la tarjeta
         positionCard(cardContainer, linkRect);
-
         cardContainer.addEventListener("mouseleave", hideCard);
       }
     };
 
-    const positionCard = (card: HTMLDivElement, linkRect: DOMRect) => {
+    const positionCard = (card: HTMLDivElement, linkRect: DOMRect): void => {
       const cardRect = card.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
@@ -84,12 +85,10 @@ const pages = await Astro.glob("../../content/es/*.mdx");
       let top = linkRect.bottom + window.scrollY;
       let left = linkRect.left + window.scrollX;
 
-      // Ajustar posición vertical si la tarjeta se sale por abajo
       if (top + cardRect.height > viewportHeight + window.scrollY) {
         top = linkRect.top + window.scrollY - cardRect.height;
       }
 
-      // Ajustar posición horizontal si la tarjeta se sale por la derecha
       if (left + cardRect.width > viewportWidth + window.scrollX) {
         left = viewportWidth + window.scrollX - cardRect.width;
       }
@@ -98,7 +97,7 @@ const pages = await Astro.glob("../../content/es/*.mdx");
       card.style.left = `${left}px`;
     };
 
-    const hideCard = () => {
+    const hideCard = (): void => {
       if (cardContainer) {
         cardContainer.remove();
         cardContainer = null;
@@ -107,29 +106,48 @@ const pages = await Astro.glob("../../content/es/*.mdx");
 
     links.forEach((link) => {
       link.addEventListener("mouseenter", (e) => {
-        const target = e.target as HTMLAnchorElement;
-        const project = projectsES.find(
-          (project) => project.url === target.href
-        );
-        if (project) {
-          const linkRect = link.getBoundingClientRect();
-          showCard(project, linkRect);
+        if (!isMobile()) {
+          const target = e.target as HTMLAnchorElement;
+          const project = projectsES.find(
+            (project: Project) => project.url === target.href
+          );
+          if (project) {
+            const linkRect = link.getBoundingClientRect();
+            showCard(project, linkRect);
+          }
+        }
+      });
+
+      link.addEventListener("click", (e) => {
+        if (isMobile()) {
+          e.preventDefault();
+          const target = e.target as HTMLAnchorElement;
+          const project = projectsES.find(
+            (project: Project) => project.url === target.href
+          );
+          if (project) {
+            const linkRect = link.getBoundingClientRect();
+            showCard(project, linkRect);
+          }
         }
       });
 
       link.addEventListener("mouseleave", (e) => {
-        setTimeout(() => {
-          if (!cardContainer?.matches(":hover") && !link.matches(":hover")) {
-            hideCard();
-          }
-        }, 100);
+        if (!isMobile()) {
+          setTimeout(() => {
+            if (!cardContainer?.matches(":hover") && !link.matches(":hover")) {
+              hideCard();
+            }
+          }, 100);
+        }
       });
     });
 
-    // Reposicionar la tarjeta al hacer scroll o redimensionar la ventana
     window.addEventListener("scroll", () => {
       if (cardContainer) {
-        const activeLink = document.querySelector("a:hover");
+        const activeLink = document.querySelector(
+          "a:hover"
+        ) as HTMLAnchorElement | null;
         if (activeLink) {
           positionCard(cardContainer, activeLink.getBoundingClientRect());
         }
@@ -138,7 +156,9 @@ const pages = await Astro.glob("../../content/es/*.mdx");
 
     window.addEventListener("resize", () => {
       if (cardContainer) {
-        const activeLink = document.querySelector("a:hover");
+        const activeLink = document.querySelector(
+          "a:hover"
+        ) as HTMLAnchorElement | null;
         if (activeLink) {
           positionCard(cardContainer, activeLink.getBoundingClientRect());
         }
@@ -146,6 +166,7 @@ const pages = await Astro.glob("../../content/es/*.mdx");
     });
   });
 </script>
+
 <style>
   .projects-grid {
     display: grid;

@@ -5,6 +5,12 @@
   ],
   "exclude": [
     "/_astro/*",
+    "/android-chrome-192x192.png",
+    "/apple-touch-icon.png",
+    "/browserconfig.xml",
+    "/favicon-16x16.png",
+    "/favicon-32x32.png",
+    "/favicon.ico",
     "/favicon.svg",
     "/images/.DS_Store",
     "/images/icons/dovaldev-icon.webp",
@@ -17,6 +23,9 @@
     "/images/projects/enlaza-top.webp",
     "/images/projects/marcadorvirtual-top.webp",
     "/images/projects/perfilazo-top.webp",
-    "/images/projects/scrapbookingdigital-top.webp"
+    "/images/projects/scrapbookingdigital-top.webp",
+    "/mstile-150x150.png",
+    "/safari-pinned-tab.svg",
+    "/site.webmanifest"
   ]
 }
