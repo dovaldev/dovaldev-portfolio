@@ -20,6 +20,14 @@ import IconArrowLeft from "@icons/IconArrowLeft.astro";
 import ThemeToggleMobile from "@components/ThemeToggleMobile.astro";
 import IconLinkedin from "@icons/IconLinkedin.astro";
 import IconGithub from "@icons/IconGithub.astro";
+import DropdownMenu from "@components/DropdownMenu.astro";
+import DropdownLink from "@components/DropdownLink.astro";
+import IconNewDocument from "@icons/IconNewDocument.astro";
+import IconOpenFolder from "@icons/IconOpenFolder.astro";
+import IconSave from "@icons/IconSave.astro";
+import IconPaste from "@icons/IconPaste.astro";
+import IconCopy from "@icons/IconCopy.astro";
+import IconCut from "@icons/IconCut.astro";
 ---
 
 <!-- Header 1 -->
@@ -36,13 +44,65 @@ import IconGithub from "@icons/IconGithub.astro";
     <div class="flex flex-col justify-center shrink">
       <div class="flex items-center gap-2 pl-2 shrink">
         <a href="/" class="text-black dark:text-white text-lg">{FILE_NAME}</a>
-        <IconStar class="size-5 text-black dark:text-white ml-4" />
-        <IconFolder class="size-5 text-black dark:text-white" />
-        <IconCloud class="size-6 text-black dark:text-white" />
+        <IconStar class="size-5 text-black/50 dark:text-white/50 ml-4" />
+        <IconFolder class="size-5 text-black/50 dark:text-white/50" />
+        <IconCloud class="size-6 text-black/50 dark:text-white/50" />
       </div>
       <div class="flex items-center w-auto shrink">
-        <NavLink href="#">Archivo</NavLink>
-        <NavLink href="#">Editar</NavLink>
+        <DropdownMenu name="Archivo">
+          <DropdownLink href="#" class="text-black/50 dark:text-white/50">
+            <slot name="icon">
+              <IconNewDocument class="mx-2 size-5" />
+            </slot>
+            Nuevo
+          </DropdownLink>
+          <DropdownLink href="#" class="text-black/50 dark:text-white/50">
+            <slot name="icon">
+              <IconOpenFolder class="mx-2 size-5" />
+            </slot>
+            Abrir
+          </DropdownLink>
+          <DropdownLink href="#" class="text-black/50 dark:text-white/50">
+            <slot name="icon">
+              <IconSave class="mx-2 size-5" />
+            </slot>
+            Guardar
+          </DropdownLink>
+        </DropdownMenu>
+
+        <DropdownMenu name="Editar">
+          <DropdownLink href="#" class="text-black/50 dark:text-white/50">
+            <slot name="icon">
+              <IconUndo class="mx-2 size-5" />
+            </slot>
+            Deshacer
+          </DropdownLink>
+          <DropdownLink href="#" class="text-black/50 dark:text-white/50">
+            <slot name="icon">
+              <IconRedo class="mx-2 size-5" />
+            </slot>
+            Rehacer
+          </DropdownLink>
+          <hr class="h-px my-1 bg-gray-200 border-0 dark:bg-gray-700"/>
+          <DropdownLink href="#" class="text-black/50 dark:text-white/50">
+            <slot name="icon">
+              <IconCut class="mx-2 size-5" />
+            </slot>
+            Cortar
+          </DropdownLink>
+          <DropdownLink href="#" class="text-black/50 dark:text-white/50">
+            <slot name="icon">
+              <IconCopy class="mx-2 size-5" />
+            </slot>
+            Copiar
+          </DropdownLink>
+          <DropdownLink href="#" class="text-black/50 dark:text-white/50">
+            <slot name="icon">
+              <IconPaste class="mx-2 size-5" />
+            </slot>
+            Pegar
+          </DropdownLink>
+        </DropdownMenu>
         <NavLink href="#">Ver</NavLink>
         <NavLink href="#">Insertar</NavLink>
         <NavLink href="#">Formato</NavLink>
@@ -54,10 +114,17 @@ import IconGithub from "@icons/IconGithub.astro";
   </div>
   <!-- Header 1-2 -->
   <div class="flex flex-grow gap-4 justify-end items-center w-full">
-    <a href="https://www.linkedin.com/in/juanadoval/" class="hover:bg-gray-200 rounded-lg p-1"><IconLinkedin class="size-5 text-black dark:text-white" /></a>
-    <a href="https://github.com/dovaldev/" class="hover:bg-gray-200 rounded-lg p-1"><IconGithub class="size-5 text-black dark:text-white" /></a>
+    <a
+      href="https://www.linkedin.com/in/juanadoval/"
+      class="hover:bg-gray-200 rounded-lg p-1"
+      ><IconLinkedin class="size-5 text-black dark:text-white" /></a
+    >
+    <a
+      href="https://github.com/dovaldev/"
+      class="hover:bg-gray-200 rounded-lg p-1"
+      ><IconGithub class="size-5 text-black dark:text-white" /></a
+    >
     <ThemeToggle elID="theme-toggle-btn" menuID="themes-menu" />
-    <IconRollback class="size-5 text-black dark:text-white shrink-0" />
     <IconMessage class="size-5 text-black dark:text-white" />
     <div class="bg-[#C2E7FF] rounded-3xl">
       <div class="py-2.5 px-6 flex items-center gap-2">
@@ -80,29 +147,36 @@ import IconGithub from "@icons/IconGithub.astro";
   <ul
     class="flex bg-gray-100 ark:bg-gray-200 dark:bg-gray-700 w-full rounded-2xl p-2 gap-2 items-center"
   >
-    <li><IconSearch class="size-5 text-black dark:text-white" /></li>
-    <li><IconUndo class="size-5 text-black dark:text-white" /></li>
-    <li><IconRedo class="size-5 text-black dark:text-white" /></li>
-    <li><button class="m-0 p-1 flex justify-center items-center hover:bg-gray-200 rounded" id="download-btn"><IconPrint class="size-5 text-black dark:text-white" /></button></li>
-    <li><IconText class="size-5 text-black dark:text-white" /></li>
-    <li><IconFormat class="size-5 text-black dark:text-white" /></li>
+    <li><IconSearch class="size-5 text-black/50 dark:text-white/50" /></li>
+    <li><IconUndo class="size-5 text-black/50 dark:text-white/50" /></li>
+    <li><IconRedo class="size-5 text-black/50 dark:text-white/50" /></li>
+    <li>
+      <button
+        class="m-0 p-1 flex justify-center items-center hover:bg-gray-200 rounded"
+        id="download-btn"
+        ><IconPrint class="size-5 text-black dark:text-white" /></button
+      >
+    </li>
+    <li><IconText class="size-5 text-black/50 dark:text-white/50" /></li>
+    <li><IconFormat class="size-5 text-black/50 dark:text-white/50" /></li>
     <li>
       <select
-        class="bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-sm rounded-lg"
+        id="scale-selector"
+        class="bg-gray-100 dark:bg-gray-700 text-black/50 dark:text-white/50 text-sm rounded-lg"
       >
-        <option value="100">100%</option>
-        <option value="80">80%</option>
+        <option value="1">100%</option>
+        <option value="0.8">80%</option>
       </select>
     </li>
     <div class="h-5 w-[1px] bg-white"></div>
     <select
-      class="bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-sm rounded-lg"
+      class="bg-gray-100 dark:bg-gray-700 text-black/50 dark:text-white/50 text-sm rounded-lg"
     >
       <option value="100">Texto nor...</option>
     </select>
     <li>
       <select
-        class="bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-sm rounded-lg"
+        class="bg-gray-100 dark:bg-gray-700 text-black/50 dark:text-white/50 text-sm rounded-lg"
       >
         <option value="100">PT Mo...</option>
       </select>
@@ -110,14 +184,14 @@ import IconGithub from "@icons/IconGithub.astro";
     <div class="h-5 w-[1px] bg-white"></div>
     <li>
       <select
-        class="bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-sm rounded-lg"
+        class="bg-gray-100 dark:bg-gray-700 text-black/50 dark:text-white/50 text-sm rounded-lg"
       >
         <option value="100">Subtítulo</option>
       </select>
     </li>
     <li>
       <select
-        class="bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-sm rounded-lg"
+        class="bg-gray-100 dark:bg-gray-700 text-black/50 dark:text-white/50 text-sm rounded-lg"
       >
         <option value="100">Robot...</option>
       </select>
@@ -125,20 +199,20 @@ import IconGithub from "@icons/IconGithub.astro";
     <div class="h-5 w-[1px] bg-white mr-1"></div>
     <li>
       <div class="flex items-center gap-2.5">
-        <button class="text-black dark:text-white">-</button>
+        <button class="text-black/50 dark:text-white/50">-</button>
         <input
           type="number"
-          class="bg-gray-200 dark:bg-gray-700 text-black dark:text-white text-sm rounded border w-8 h-6 text-center"
+          class="bg-gray-200 dark:bg-gray-700 text-black/50 dark:text-white/50 text-sm rounded border w-8 h-6 text-center"
           value="9"
         />
-        <button class="text-black dark:text-white">+</button>
+        <button class="text-black/50 dark:text-white/50">+</button>
       </div>
     </li>
     <div class="h-5 w-[1px] bg-white ml-1"></div>
     <div class="flex gap-4 items-center">
-      <li class="font-semibold text-black dark:text-white">B</li>
-      <li class="font-serif italic text-black dark:text-white">I</li>
-      <li class="underline underline-offset-4 text-black dark:text-white">U</li>
+      <li class="font-semibold text-black/50 dark:text-white/50">B</li>
+      <li class="font-serif italic text-black/50 dark:text-white/50">I</li>
+      <li class="underline underline-offset-4 text-black/50 dark:text-white/50">U</li>
     </div>
   </ul>
 </nav>
@@ -148,7 +222,65 @@ import IconGithub from "@icons/IconGithub.astro";
   <ThemeToggleMobile />
 </nav>
 <nav class="flex gap-4 my-2 md:hidden">
-
-  <a href="https://www.linkedin.com/in/juanadoval/" class="hover:bg-gray-200 rounded-lg p-1"><IconLinkedin class="size-5 text-black dark:text-white" /></a>
-  <a href="https://github.com/dovaldev/" class="hover:bg-gray-200 rounded-lg p-1"><IconGithub class="size-5 text-black dark:text-white" /></a>
+  <a
+    href="https://www.linkedin.com/in/juanadoval/"
+    class="hover:bg-gray-200 rounded-lg p-1"
+    ><IconLinkedin class="size-5 text-black dark:text-white" /></a
+  >
+  <a
+    href="https://github.com/dovaldev/"
+    class="hover:bg-gray-200 rounded-lg p-1"
+    ><IconGithub class="size-5 text-black dark:text-white" /></a
+  >
 </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const dropdowns = document.querySelectorAll(".dropdown");
+
+    dropdowns.forEach((dropdown) => {
+      const toggleButton = dropdown.querySelector(".dropdown-toggle");
+      const menu = dropdown.querySelector(".dropdown-menu");
+
+      if (!toggleButton || !menu) return;
+
+      toggleButton.addEventListener("click", function (event) {
+        event.stopPropagation(); // Para evitar que el click cierre el dropdown inmediatamente
+
+        // Cerrar todos los demás dropdowns
+        dropdowns.forEach((otherDropdown) => {
+          if (otherDropdown !== dropdown) {
+            const otherMenu = otherDropdown.querySelector(".dropdown-menu");
+            otherMenu?.classList.remove("show");
+          }
+        });
+
+        // Alternar el menú actual
+        menu.classList.toggle("show");
+      });
+    });
+
+    // Cerrar el dropdown al hacer clic fuera
+    document.addEventListener("click", function (event) {
+      const target = event.target as Node; // Hacemos una conversión explícita a Node
+      dropdowns.forEach((dropdown) => {
+        const menu = dropdown.querySelector(".dropdown-menu");
+        if (!menu) return;
+
+        if (!dropdown.contains(target)) {
+          menu.classList.remove("show");
+        }
+      });
+    });
+  });
+
+  // Scale selector dropdown
+
+  const scaleSelector = document.getElementById("scale-selector");
+  scaleSelector?.addEventListener('change', function() {
+  const selectedValue = (this as HTMLSelectElement).value;
+  // Cambiar el valor de la variable CSS
+  document.documentElement.style.setProperty('--custom-scale', selectedValue);
+});
+
+</script>

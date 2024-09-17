@@ -14,7 +14,10 @@ const lang = pathname.startsWith("/es") ? "es" : "en";
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Porfolio de dovaldev creado simulando Google Docs, con todos mis proyectos creados. Juan A. Doval." />
+    <meta
+      name="description"
+      content="Porfolio de dovaldev creado simulando Google Docs, con todos mis proyectos creados. Juan A. Doval."
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
@@ -26,8 +29,14 @@ const lang = pathname.startsWith("/es") ? "es" : "en";
 
     <!-- Open Graph Tags -->
     <meta property="og:title" content="{title}" />
-    <meta property="og:description" content="Porfolio de dovaldev creado simulando Google Docs, con todos mis proyectos creados. Juan A. Doval." />
-    <meta property="og:image" content="https://portfolio.dovaldev.com/images/og/og.webp" />
+    <meta
+      property="og:description"
+      content="Porfolio de dovaldev creado simulando Google Docs, con todos mis proyectos creados. Juan A. Doval."
+    />
+    <meta
+      property="og:image"
+      content="https://portfolio.dovaldev.com/images/og/og.webp"
+    />
     <meta property="og:url" content="https://portfolio.dovaldev.com" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_ES" />
@@ -35,8 +44,14 @@ const lang = pathname.startsWith("/es") ? "es" : "en";
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content="Porfolio de dovaldev creado simulando Google Docs, con todos mis proyectos creados. Juan A. Doval." />
-    <meta name="twitter:image" content="https://portfolio.dovaldev.com/images/og/og.webp" />
+    <meta
+      name="twitter:description"
+      content="Porfolio de dovaldev creado simulando Google Docs, con todos mis proyectos creados. Juan A. Doval."
+    />
+    <meta
+      name="twitter:image"
+      content="https://portfolio.dovaldev.com/images/og/og.webp"
+    />
     <meta name="twitter:site" content="@dovaldev" />
   </head>
   <body class="bg-gray-50 dark:bg-[#13151a]">
@@ -54,11 +69,17 @@ const lang = pathname.startsWith("/es") ? "es" : "en";
       rgb(var(--accent-light)) 30%,
       white 60%
     );
+    --custom-scale: 1;
   }
 
   html {
     font-family: system-ui, sans-serif;
     background-color: var(--bg-color);
+  }
+
+  /** Global variables Tailwind */
+  .scale-custom {
+    transform: scale(var(--custom-scale));
   }
 
   /* Configuración de modos oscuro y claro */
@@ -202,6 +223,42 @@ const lang = pathname.startsWith("/es") ? "es" : "en";
   .bg-random-5 {
     @apply bg-purple-300 !text-black;
   }
+
+  /** Drowpdown Menu */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+ 
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 320px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .dropdown-menu :global(a) {
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-menu :global(a:hover) {
+    background-color: #f1f1f1;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .rotate {
+    transform: rotate(180deg);
+  }
 </style>
 
 <script>
@@ -233,7 +290,6 @@ const lang = pathname.startsWith("/es") ? "es" : "en";
 <!-- Script para la generación del PDF -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    
     const downloadBtn = document.getElementById("download-btn");
     const pagesContainer = document.getElementById("pages");
 

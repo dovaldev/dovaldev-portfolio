@@ -6,6 +6,7 @@
   "exclude": [
     "/_astro/*",
     "/favicon.svg",
-    "/images/icons/dovaldev-icon.webp"
+    "/images/icons/dovaldev-icon.webp",
+    "/images/og/og.webp"
   ]
 }

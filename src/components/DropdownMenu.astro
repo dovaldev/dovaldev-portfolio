@@ -1,0 +1,22 @@
+---
+interface Props {
+  class?: string;
+  name: string;
+}
+
+const { class: className = "", name = "" } = Astro.props;
+---
+
+<div class={`dropdown ${className}`}>
+  <button
+    class=`dropdown-toggle text-sm text-black dark:text-white font-thin hover:bg-gray-200 dark:hover:bg-gray-700 rounded-[2px] transition-all ease-in-out py-0.5 px-2`
+  >
+    {name}
+  </button>
+  <div class="dropdown-menu">
+    <div class="w-full h-auto flex flex-col p-0.5">
+      <slot />
+    </div>
+  </div>
+</div>
+

@@ -11,10 +11,11 @@ import Nav from "@components/Nav.astro";
     <slot />
 
     <!-- Footer content -->
-    <footer class="h-10 bg-black/10 flex justify-center items-center">
-      <p class="text-black dark:text-white font-thin text-base">
+    <footer class="h-auto pt-1 pb-2 px-2 bg-black/10 flex justify-center items-center flex-col">
+      <p class="text-black dark:text-white font-thin text-sm">
         Creado por <span class="font-bold text-yellow-600 dark:text-yellow-300">Juan A. Doval</span> en
-        Astro
+        Astro y TailwindCSS
       </p>
+      <p class="text-black dark:text-white font-thin text-xs">Algunos componentes son del porfolio de <a class="font-bold hover:text-gray-700 dark:hover:text-gray-300" href="https://porfolio.dev/" rel="nofollow noopener" target="_blank">midudev</a></p>
     </footer>
   </main>
