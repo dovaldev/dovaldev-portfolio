@@ -1,7 +1,7 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 /* empty css                                 */
 import { c as createAstro, a as createComponent, r as renderTemplate, m as maybeRenderHead, s as spreadAttributes, b as addAttribute, d as renderSlot, e as createTransitionScope, f as renderComponent } from '../chunks/astro/server_DrIVYDa9.mjs';
-import { $ as $$Layout } from '../chunks/Layout_DqdoFKlX.mjs';
+import { $ as $$Layout } from '../chunks/Layout_jPuQp5Gg.mjs';
 /* empty css                                 */
 export { renderers } from '../renderers.mjs';
 
@@ -20,7 +20,7 @@ const $$NavLink = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$s, $$props, $$slots);
   Astro2.self = $$NavLink;
   const props = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<a title="No tienes permisos de edición"${addAttribute(props.href, "href")}${addAttribute(` cursor-not-allowed text-sm text-black dark:text-white font-thin ${props.class} hover:bg-gray-200 dark:hover:bg-gray-700 rounded-[2px] transition-all ease-in-out py-0.5 px-2`, "class")}> ${renderSlot($$result, $$slots["default"])} </a>`;
+  return renderTemplate`${maybeRenderHead()}<a title="No tienes permisos de edición"${addAttribute(props.href, "href")}${addAttribute(`cursor-not-allowed text-sm text-black dark:text-white font-thin ${props.class} hover:bg-gray-200 dark:hover:bg-gray-700 rounded-[2px] transition-all ease-in-out py-0.5 px-2`, "class")}> ${renderSlot($$result, $$slots["default"])} </a>`;
 }, "/Users/lilianacristinasilvacarvalho/Desktop/ProyectosAstro/dovaldev-portfolio/src/components/NavLink.astro", void 0);
 
 const $$Astro$r = createAstro("https://portfolio.dovaldev.com");
@@ -307,7 +307,7 @@ const $$DropdownMenu = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$9, $$props, $$slots);
   Astro2.self = $$DropdownMenu;
   const { class: className = "", name = "" } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<div${addAttribute(`dropdown ${className}`, "class")}> <button${addAttribute(`dropdown-toggle text-sm text-black dark:text-white font-thin hover:bg-gray-200 dark:hover:bg-gray-700 rounded-[2px] transition-all ease-in-out py-0.5 px-2`, "class")}> ${name} </button> <div class="dropdown-menu"> <div class="w-full h-auto flex flex-col p-0.5"> ${renderSlot($$result, $$slots["default"])} </div> </div> </div>`;
+  return renderTemplate`${maybeRenderHead()}<div${addAttribute(`dropdown ${className}`, "class")}> <button${addAttribute(`dropdown-toggle text-sm text-black dark:text-white font-thin hover:bg-gray-200 dark:hover:bg-gray-700 rounded-[2px] transition-all ease-in-out py-0.5 px-2`, "class")}> ${name} </button> <div class="dropdown-menu bg-white dark:bg-black"> <div class="w-full h-auto flex flex-col p-0.5"> ${renderSlot($$result, $$slots["default"])} </div> </div> </div>`;
 }, "/Users/lilianacristinasilvacarvalho/Desktop/ProyectosAstro/dovaldev-portfolio/src/components/DropdownMenu.astro", void 0);
 
 const $$Astro$8 = createAstro("https://portfolio.dovaldev.com");
@@ -331,7 +331,7 @@ const $$IconOpenFolder = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
   Astro2.self = $$IconOpenFolder;
   const props = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg"${spreadAttributes(props)} viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M12 19h-7a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v3.5"></path> <path d="M16 19h6"></path> <path d="M19 16v6"></path> </svg>`;
+  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg"${spreadAttributes(props)} viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M12 19h-7a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2h4l3 3h7a2 2 0 0 1 2 2v3.5"></path> <path d="M16 19h6"></path> <path d="M19 16v6"></path> </svg>`;
 }, "/Users/lilianacristinasilvacarvalho/Desktop/ProyectosAstro/dovaldev-portfolio/src/icons/IconOpenFolder.astro", void 0);
 
 const $$Astro$5 = createAstro("https://portfolio.dovaldev.com");
@@ -339,7 +339,7 @@ const $$IconSave = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
   Astro2.self = $$IconSave;
   const props = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg"${spreadAttributes(props)} viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path> <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path> <path d="M14 4l0 4l-6 0l0 -4"></path> </svg>`;
+  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg"${spreadAttributes(props)} viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path> <path d="M12 14m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path> <path d="M14 4l0 4l-6 0l0 -4"></path> </svg>`;
 }, "/Users/lilianacristinasilvacarvalho/Desktop/ProyectosAstro/dovaldev-portfolio/src/icons/IconSave.astro", void 0);
 
 const $$Astro$4 = createAstro("https://portfolio.dovaldev.com");
@@ -347,7 +347,7 @@ const $$IconPaste = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
   Astro2.self = $$IconPaste;
   const props = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg"${spreadAttributes(props)} viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path> <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path> </svg>`;
+  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg"${spreadAttributes(props)} viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path> <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path> </svg>`;
 }, "/Users/lilianacristinasilvacarvalho/Desktop/ProyectosAstro/dovaldev-portfolio/src/icons/IconPaste.astro", void 0);
 
 const $$Astro$3 = createAstro("https://portfolio.dovaldev.com");
@@ -355,7 +355,7 @@ const $$IconCopy = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$IconCopy;
   const props = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg"${spreadAttributes(props)} viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path> <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path> </svg>`;
+  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg"${spreadAttributes(props)} viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path> <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path> </svg>`;
 }, "/Users/lilianacristinasilvacarvalho/Desktop/ProyectosAstro/dovaldev-portfolio/src/icons/IconCopy.astro", void 0);
 
 const $$Astro$2 = createAstro("https://portfolio.dovaldev.com");
@@ -363,7 +363,7 @@ const $$IconCut = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$IconCut;
   const props = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg"${spreadAttributes(props)} viewBox="0 0 24 24" stroke-width="1" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M7 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path> <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path> <path d="M9.15 14.85l8.85 -10.85"></path> <path d="M6 4l8.85 10.85"></path> </svg>`;
+  return renderTemplate`${maybeRenderHead()}<svg xmlns="http://www.w3.org/2000/svg"${spreadAttributes(props)} viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <path d="M7 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path> <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path> <path d="M9.15 14.85l8.85 -10.85"></path> <path d="M6 4l8.85 10.85"></path> </svg>`;
 }, "/Users/lilianacristinasilvacarvalho/Desktop/ProyectosAstro/dovaldev-portfolio/src/icons/IconCut.astro", void 0);
 
 const $$Nav = createComponent(($$result, $$props, $$slots) => {
@@ -400,8 +400,8 @@ const $$Astro = createAstro("https://portfolio.dovaldev.com");
 const $$Index = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Index;
-  const pages = await Astro2.glob(/* #__PURE__ */ Object.assign({"../../content/es/page-1.mdx": () => import('../chunks/page-1_B62UkHqo.mjs'),"../../content/es/page-2.mdx": () => import('../chunks/page-2_BMTiRwvn.mjs'),"../../content/es/page-3.mdx": () => import('../chunks/page-3_DGERRh3D.mjs')}), () => "../../content/es/*.mdx");
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Porfolio de Juan A. Doval con mis Proyectos | dovaldev" }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "GoogleDocs", $$GoogleDocs, {}, { "default": ($$result3) => renderTemplate` ${maybeRenderHead()}<div id="pages" class="flex flex-1 flex-col gap-10 items-center overflow-y-scroll scrollbar-custom p-2 md:py-5"> ${pages.map((item) => renderTemplate`${renderComponent($$result3, "item.Content", item.Content, {})}`)} </div> ` })} ` })}`;
+  const pages = await Astro2.glob(/* #__PURE__ */ Object.assign({"../../content/es/page-1.mdx": () => import('../chunks/page-1_BGfLBu58.mjs'),"../../content/es/page-2.mdx": () => import('../chunks/page-2_BMTiRwvn.mjs'),"../../content/es/page-3.mdx": () => import('../chunks/page-3_DGERRh3D.mjs')}), () => "../../content/es/*.mdx");
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Porfolio de Juan A. Doval con mis Proyectos | dovaldev", "data-astro-cid-7pewbour": true }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "GoogleDocs", $$GoogleDocs, { "data-astro-cid-7pewbour": true }, { "default": ($$result3) => renderTemplate` ${maybeRenderHead()}<div id="pages" class="flex flex-1 flex-col gap-10 items-center overflow-y-scroll scrollbar-custom p-2 md:py-5" data-astro-cid-7pewbour> ${pages.map((item) => renderTemplate`${renderComponent($$result3, "item.Content", item.Content, { "data-astro-cid-7pewbour": true })}`)} </div> ` })} ` })}  `;
 }, "/Users/lilianacristinasilvacarvalho/Desktop/ProyectosAstro/dovaldev-portfolio/src/pages/es/index.astro", void 0);
 
 const $$file = "/Users/lilianacristinasilvacarvalho/Desktop/ProyectosAstro/dovaldev-portfolio/src/pages/es/index.astro";

@@ -1,7 +1,7 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 /* empty css                                 */
 import { c as createAstro, a as createComponent, r as renderTemplate, f as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_DrIVYDa9.mjs';
-import { $ as $$Layout } from '../chunks/Layout_DqdoFKlX.mjs';
+import { $ as $$Layout } from '../chunks/Layout_jPuQp5Gg.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro("https://portfolio.dovaldev.com");

@@ -2,6 +2,6 @@
 const props = Astro.props;
 ---
 
-<a  title="No tienes permisos de edición" href={props.href} class={` cursor-not-allowed text-sm text-black dark:text-white font-thin ${props.class} hover:bg-gray-200 dark:hover:bg-gray-700 rounded-[2px] transition-all ease-in-out py-0.5 px-2`}>
+<a  title="No tienes permisos de edición" href={props.href} class={`cursor-not-allowed text-sm text-black dark:text-white font-thin ${props.class} hover:bg-gray-200 dark:hover:bg-gray-700 rounded-[2px] transition-all ease-in-out py-0.5 px-2`}>
     <slot/>
 </a>

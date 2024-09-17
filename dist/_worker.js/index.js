@@ -1,7 +1,7 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 import { renderers } from './renderers.mjs';
 import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_BS7IboQx.mjs';
-import { manifest } from './manifest_D6hp08ac.mjs';
+import { manifest } from './manifest_DSKjsLI7.mjs';
 import { onRequest } from './_astro-internal_middleware.mjs';
 
 const _page0 = () => import('./pages/_image.astro.mjs');

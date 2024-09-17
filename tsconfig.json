@@ -11,6 +11,7 @@
       "@icons/*": ["src/icons/*"],
       "@js/*": ["src/js/*"],
       "@content/*": ["src/content/*"],
+      "@data/*": ["src/data/*"],
     }
   }
 }

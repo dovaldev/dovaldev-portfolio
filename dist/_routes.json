@@ -6,7 +6,17 @@
   "exclude": [
     "/_astro/*",
     "/favicon.svg",
+    "/images/.DS_Store",
     "/images/icons/dovaldev-icon.webp",
-    "/images/og/og.webp"
+    "/images/og/og.webp",
+    "/images/projects/arteconlili-com.webp",
+    "/images/projects/calculadoraonline-top.webp",
+    "/images/projects/cdbarco-com.webp",
+    "/images/projects/deluxeproducciones-es.webp",
+    "/images/projects/depositoagua-com.webp",
+    "/images/projects/enlaza-top.webp",
+    "/images/projects/marcadorvirtual-top.webp",
+    "/images/projects/perfilazo-top.webp",
+    "/images/projects/scrapbookingdigital-top.webp"
   ]
 }
