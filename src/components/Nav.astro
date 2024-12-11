@@ -28,6 +28,7 @@ import IconSave from "@icons/IconSave.astro";
 import IconPaste from "@icons/IconPaste.astro";
 import IconCopy from "@icons/IconCopy.astro";
 import IconCut from "@icons/IconCut.astro";
+import { shareOnWhatsApp, shareOnFacebook, shareOnLinkedIn, shareOnTwitter, shareOnEmail } from "@js/share";
 ---
 
 <!-- Header 1 -->
@@ -126,12 +127,19 @@ import IconCut from "@icons/IconCut.astro";
     >
     <ThemeToggle elID="theme-toggle-btn" menuID="themes-menu" />
     <IconMessage class="size-5 text-black dark:text-white" />
-    <div class="bg-[#C2E7FF] rounded-3xl">
-      <div class="py-2.5 px-6 flex items-center gap-2">
+    <div class="bg-[#C2E7FF] rounded-3xl relative">
+      <div class="py-2.5 px-6 flex items-center gap-2 cursor-pointer" id="share-button">
         <IconLock class="size-5 text-gray-800" />
         <span>Compartir</span>
         <div class="h-5 w-[1px] bg-white ml-1"></div>
         <IconArrowDown class="size-3 text-gray-800" />
+      </div>
+      <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-20 hidden" id="share-options">
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" id="share-whatsapp">WhatsApp</a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" id="share-facebook">Facebook</a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" id="share-linkedin">LinkedIn</a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" id="share-twitter">Twitter</a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" id="share-email">Email</a>
       </div>
     </div>
     <img
@@ -271,6 +279,35 @@ import IconCut from "@icons/IconCut.astro";
           menu.classList.remove("show");
         }
       });
+    });
+
+    const shareButton = document.getElementById("share-button");
+    const shareOptions = document.getElementById("share-options");
+
+    shareButton?.addEventListener("click", function () {
+      shareOptions?.classList.toggle("hidden");
+    });
+
+    const currentUrl = window.location.href;
+
+    document.getElementById("share-whatsapp")?.addEventListener("click", function () {
+      shareOnWhatsApp(currentUrl);
+    });
+
+    document.getElementById("share-facebook")?.addEventListener("click", function () {
+      shareOnFacebook(currentUrl);
+    });
+
+    document.getElementById("share-linkedin")?.addEventListener("click", function () {
+      shareOnLinkedIn(currentUrl);
+    });
+
+    document.getElementById("share-twitter")?.addEventListener("click", function () {
+      shareOnTwitter(currentUrl);
+    });
+
+    document.getElementById("share-email")?.addEventListener("click", function () {
+      shareOnEmail(currentUrl);
     });
   });
 
