@@ -99,6 +99,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     console.log(`📝 Nuevo mensaje recibido: "${message.substring(0, 30)}${message.length > 30 ? '...' : ''}"`);
     console.log(`😂 ${getRandomJoke()}`);
     
+    // Crear logs para enviar al cliente
+    const serverLogs = {
+      messageReceived: `📝 Nuevo mensaje recibido: "${message.substring(0, 30)}${message.length > 30 ? '...' : ''}"`,
+      joke: `😂 ${getRandomJoke()}`
+    };
+    
     // Obtener la IP del cliente
     const ip = clientAddress || "unknown";
     const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
@@ -179,7 +185,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
     return new Response(
       JSON.stringify({
-        response: completion.choices[0].message.content
+        response: completion.choices[0].message.content,
+        serverLogs: serverLogs // Incluir logs para mostrarlos en el navegador
       }),
       { 
         status: 200,

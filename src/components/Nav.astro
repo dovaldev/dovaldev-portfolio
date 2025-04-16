@@ -126,15 +126,20 @@ import Chat from "@components/Chat.astro";
       ><IconGithub class="size-5 text-black dark:text-white" /></a
     >
     <ThemeToggle elID="theme-toggle-btn" menuID="themes-menu" />
-    <button id="chat-button" class="hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-1">
-      <IconMessage class="size-5 text-black dark:text-white" />
-    </button>
+    <IconMessage id="chat-button" class="size-5 text-black dark:text-white cursor-pointer" />
     <div class="bg-[#C2E7FF] rounded-3xl">
       <div class="py-2.5 px-6 flex items-center gap-2">
         <IconLock class="size-5 text-gray-800" />
         <span>Compartir</span>
         <div class="h-5 w-[1px] bg-white ml-1"></div>
         <IconArrowDown class="size-3 text-gray-800" />
+      </div>
+      <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg z-20 hidden" id="share-options">
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" id="share-whatsapp">WhatsApp</a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" id="share-facebook">Facebook</a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" id="share-linkedin">LinkedIn</a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" id="share-twitter">Twitter</a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700" id="share-email">Email</a>
       </div>
     </div>
     <img
@@ -287,18 +292,6 @@ import Chat from "@components/Chat.astro";
         }
       });
     });
-
-    // Add interactivity to the share button - Updated selector
-    const shareButtonContainer = document.querySelector('.bg-\\[\\#C2E7FF\\]');
-    if (shareButtonContainer) {
-      const shareButtonDiv = shareButtonContainer.querySelector('div');
-      if (shareButtonDiv) {
-        (shareButtonContainer as HTMLElement).style.cursor = 'pointer';
-        shareButtonDiv.addEventListener('click', function() {
-          alert('Funcionalidad de compartir aún no implementada');
-        });
-      }
-    }
   });
 
   // Scale selector dropdown

@@ -93,6 +93,13 @@ chatForm?.addEventListener('submit', async (e) => {
     }
 
     const data = await response.json();
+    
+    // Mostrar los logs del servidor en la consola del navegador
+    if (data.serverLogs) {
+      console.log(data.serverLogs.messageReceived);
+      console.log(data.serverLogs.joke);
+    }
+    
     addMessage(data.response, false);
   } catch (error) {
     console.error('Error:', error);
