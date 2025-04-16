@@ -1,0 +1,102 @@
+---
+const { class: className = "" } = Astro.props;
+---
+
+<div class={`chat-container fixed bottom-0 right-4 z-50 ${className}`}>
+  <div id="chat-toggle" class="bg-[#C2E7FF] hover:brightness-105 rounded-t-lg p-3 cursor-pointer flex items-center gap-2">
+    <span class="text-black">Chat con Juan</span>
+    <span id="chat-arrow" class="transform transition-transform">▼</span>
+  </div>
+  
+  <div id="chat-window" class="hidden bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 w-[350px] h-[500px] rounded-t-lg flex flex-col">
+    <div class="flex-1 p-4 overflow-y-auto" id="chat-messages">
+      <!-- Messages will be inserted here -->
+    </div>
+    
+    <form id="chat-form" class="border-t border-gray-200 dark:border-gray-700 p-4">
+      <div class="flex gap-2">
+        <input
+          type="text"
+          id="chat-input"
+          class="flex-1 px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+          placeholder="Escribe tu mensaje..."
+        />
+        <button type="submit" class="bg-[#C2E7FF] text-black px-4 py-2 rounded-lg hover:brightness-105">
+          Enviar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+const chatToggle = document.getElementById('chat-toggle');
+const chatWindow = document.getElementById('chat-window');
+const chatArrow = document.getElementById('chat-arrow');
+const chatForm = document.getElementById('chat-form');
+const chatInput = document.getElementById('chat-input') as HTMLInputElement;
+const chatMessages = document.getElementById('chat-messages');
+
+let isOpen = false;
+
+chatToggle?.addEventListener('click', () => {
+  isOpen = !isOpen;
+  if (chatWindow) {
+    chatWindow.classList.toggle('hidden');
+  }
+  if (chatArrow) {
+    chatArrow.style.transform = isOpen ? 'rotate(180deg)' : '';
+  }
+});
+
+// Add a message to the chat window
+function addMessage(content: string, isUser: boolean) {
+  if (!chatMessages) return;
+
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `mb-4 ${isUser ? 'text-right' : 'text-left'}`;
+  
+  const messageBubble = document.createElement('div');
+  messageBubble.className = `inline-block p-3 rounded-lg ${
+    isUser 
+      ? 'bg-[#C2E7FF] text-black' 
+      : 'bg-gray-100 dark:bg-gray-700 text-black dark:text-white'
+  }`;
+  messageBubble.textContent = content;
+  
+  messageDiv.appendChild(messageBubble);
+  chatMessages.appendChild(messageDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Handle form submission
+chatForm?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  if (!chatInput || !chatInput.value.trim()) return;
+  
+  const userMessage = chatInput.value;
+  addMessage(userMessage, true);
+  chatInput.value = '';
+
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message: userMessage }),
+    });
+    
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+    addMessage(data.response, false);
+  } catch (error) {
+    console.error('Error:', error);
+    addMessage('Lo siento, ha ocurrido un error. Por favor, inténtalo de nuevo.', false);
+  }
+});
+</script>
