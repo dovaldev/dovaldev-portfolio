@@ -28,6 +28,7 @@ import IconSave from "@icons/IconSave.astro";
 import IconPaste from "@icons/IconPaste.astro";
 import IconCopy from "@icons/IconCopy.astro";
 import IconCut from "@icons/IconCut.astro";
+import Chat from "@components/Chat.astro";
 ---
 
 <!-- Header 1 -->
@@ -125,7 +126,9 @@ import IconCut from "@icons/IconCut.astro";
       ><IconGithub class="size-5 text-black dark:text-white" /></a
     >
     <ThemeToggle elID="theme-toggle-btn" menuID="themes-menu" />
-    <IconMessage class="size-5 text-black dark:text-white" />
+    <button id="chat-button" class="hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg p-1">
+      <IconMessage class="size-5 text-black dark:text-white" />
+    </button>
     <div class="bg-[#C2E7FF] rounded-3xl">
       <div class="py-2.5 px-6 flex items-center gap-2">
         <IconLock class="size-5 text-gray-800" />
@@ -142,7 +145,7 @@ import IconCut from "@icons/IconCut.astro";
 </nav>
 <!-- Header 2 -->
 <nav
-  class="hidden md:block mt-2 verflow-x-scroll whitespace-nowrap cursor-grab overflow-hidden w-full"
+  class="hidden md:block mt-2 overflow-x-scroll whitespace-nowrap cursor-grab overflow-hidden w-full"
 >
   <ul
     class="flex bg-gray-100 ark:bg-gray-200 dark:bg-gray-700 w-full rounded-2xl p-2 gap-2 items-center"
@@ -198,6 +201,16 @@ import IconCut from "@icons/IconCut.astro";
     </li>
     <div class="h-5 w-[1px] bg-white mr-1"></div>
     <li>
+      <select
+        class="bg-gray-100 dark:bg-gray-700 text-black/50 dark:text-white/50 text-sm rounded-lg"
+      >
+        <option value="gpt-4">GPT-4</option>
+        <option value="gpt-3.5">GPT-3.5</option>
+        <option value="claude">Claude</option>
+      </select>
+    </li>
+    <div class="h-5 w-[1px] bg-white ml-1"></div>
+    <li>
       <div class="flex items-center gap-2.5">
         <button class="text-black/50 dark:text-white/50">-</button>
         <input
@@ -233,6 +246,8 @@ import IconCut from "@icons/IconCut.astro";
     ><IconGithub class="size-5 text-black dark:text-white" /></a
   >
 </nav>
+
+<Chat id="main-chat" />
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -272,15 +287,34 @@ import IconCut from "@icons/IconCut.astro";
         }
       });
     });
+
+    // Add interactivity to the share button - Updated selector
+    const shareButtonContainer = document.querySelector('.bg-\\[\\#C2E7FF\\]');
+    if (shareButtonContainer) {
+      const shareButtonDiv = shareButtonContainer.querySelector('div');
+      if (shareButtonDiv) {
+        (shareButtonContainer as HTMLElement).style.cursor = 'pointer';
+        shareButtonDiv.addEventListener('click', function() {
+          alert('Funcionalidad de compartir aún no implementada');
+        });
+      }
+    }
   });
 
   // Scale selector dropdown
 
   const scaleSelector = document.getElementById("scale-selector");
   scaleSelector?.addEventListener('change', function() {
-  const selectedValue = (this as HTMLSelectElement).value;
-  // Cambiar el valor de la variable CSS
-  document.documentElement.style.setProperty('--custom-scale', selectedValue);
-});
+    const selectedValue = (this as HTMLSelectElement).value;
+    // Cambiar el valor de la variable CSS
+    document.documentElement.style.setProperty('--custom-scale', selectedValue);
+  });
 
+  // Add chat button functionality
+  const chatButton = document.getElementById('chat-button');
+  const chatToggle = document.getElementById('chat-toggle');
+  
+  chatButton?.addEventListener('click', () => {
+    chatToggle?.click();
+  });
 </script>
